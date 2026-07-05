@@ -1,0 +1,6 @@
+{
+  "name": "CampusHub",
+  "description": "Discover and register for university events, competitions, and campus ambassador opportunities seamlessly.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
