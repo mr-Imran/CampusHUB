@@ -29,6 +29,7 @@ import com.example.data.model.Opportunity
 import com.example.data.model.Registration
 import com.example.ui.CampusViewModel
 import com.example.ui.components.AdBanner
+import com.example.ui.components.CalendarTabContent
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -209,6 +210,27 @@ fun DashboardScreen(
                             fontSize = 13.sp
                         )
                     }
+
+                    // Calendar Tab Button
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(24.dp))
+                            .background(
+                                if (selectedStudentTab == 2) MaterialTheme.colorScheme.primary
+                                else MaterialTheme.colorScheme.secondary
+                            )
+                            .clickable { selectedStudentTab = 2 }
+                            .padding(horizontal = 20.dp, vertical = 10.dp)
+                            .testTag("student_tab_calendar"),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Calendar",
+                            color = if (selectedStudentTab == 2) Color.White else MaterialTheme.colorScheme.onSecondary,
+                            fontWeight = FontWeight.Black,
+                            fontSize = 13.sp
+                        )
+                    }
                 }
 
                 if (selectedStudentTab == 0) {
@@ -216,8 +238,13 @@ fun DashboardScreen(
                         viewModel = viewModel,
                         onOpportunityClick = onOpportunityClick
                     )
-                } else {
+                } else if (selectedStudentTab == 1) {
                     RegistrationsTabContent(
+                        viewModel = viewModel,
+                        onOpportunityClick = onOpportunityClick
+                    )
+                } else {
+                    CalendarTabContent(
                         viewModel = viewModel,
                         onOpportunityClick = onOpportunityClick
                     )
